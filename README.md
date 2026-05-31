@@ -18,8 +18,6 @@ Estatísticas de Evolução: Painel analítico que calcula de forma dinâmica a 
 
 Catálogo de Exercícios Integrado: Base de conhecimento categorizada (Peitoral, Costas, Pernas, Cardio) com descrições detalhadas de cada movimento.
 
-Design Moderno e Responsivo: Interface escura e futurista adaptada a todos os dispositivos usando Tailwind CSS v4 e com a identidade visual verde-limão (#b3ff38) personalizada da marca Calli.
-
 # Tecnologias Utilizadas
 
 Framework: Next.js (v15+) (App Router & React Server Components)
