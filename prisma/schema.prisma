@@ -1,0 +1,37 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String        @id @default(uuid())
+  name      String
+  email     String        @unique
+  password  String        
+  workouts  WorkoutList[]
+  createdAt DateTime      @default(now())
+}
+
+model WorkoutList {
+  id        String     @id @default(uuid())
+  name      String
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exercises Exercise[]
+  createdAt DateTime   @default(now())
+}
+
+model Exercise {
+  id            String      @id @default(uuid())
+  name          String
+  baseId        String      
+  type          String      
+  value         Int
+  completed     Boolean     @default(false)
+  workoutListId String
+  workoutList   WorkoutList @relation(fields: [workoutListId], references: [id], onDelete: Cascade)
+}
