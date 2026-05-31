@@ -138,4 +138,4 @@ A comunicação e validação de tokens JWT da sessão é realizada de forma sil
 
 | `GET/api/auth/session` | Retorna os dados do utilizador ativo (User ID, e-mail e nome) |
 
-`O Diagrama de classes e o Diagrama de casos de uso estão na pasta docs`
+##O Diagrama de classes e o Diagrama de casos de uso estão na pasta docs
