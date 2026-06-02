@@ -3,11 +3,10 @@
 import { revalidatePath } from 'next/cache';
 import prisma from '@/lib/prisma';
 import { getServerSession } from "next-auth";
-import { authOptions } from '@/lib/auth'; // <--- Nova importação
+import { authOptions } from '@/lib/auth';
 import { ALL_EXERCISES } from '@/lib/exercises';
 
 export async function getSessionUserId() {
-  // Passamos as authOptions aqui! Agora o servidor consegue ler o cookie corretamente.
   const session = await getServerSession(authOptions); 
   const user = session?.user as { id?: string } | undefined;
   return user?.id;
