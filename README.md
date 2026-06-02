@@ -26,7 +26,7 @@ Linguagem: TypeScript
 
 Base de Dados: PostgreSQL
 
-ORM / Conectividade: Prisma (com suporte nativo a Pool de ligações)
+Conectividade: Prisma
 
 Autenticação: NextAuth.js
 
