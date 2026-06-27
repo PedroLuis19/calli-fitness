@@ -9,7 +9,6 @@ type Exercicio = { id: string; name: string; type: string; value: number; comple
 type Treino = { id: string; name: string; exercises: Exercicio[]; };
 
 export default async function TreinosPage(props: { searchParams: Promise<{ listId?: string }> }) {
-  // ATENÇÃO: No Next.js 15, searchParams é uma Promise e tem de ter "await"
   const searchParams = await props.searchParams;
 
   const userId = await getSessionUserId();

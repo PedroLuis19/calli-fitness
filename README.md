@@ -18,8 +18,6 @@ Estatísticas de Evolução: Painel analítico que calcula de forma dinâmica a 
 
 Catálogo de Exercícios Integrado: Base de conhecimento categorizada (Peitoral, Costas, Pernas, Cardio) com descrições detalhadas de cada movimento.
 
-Design Moderno e Responsivo: Interface escura e futurista adaptada a todos os dispositivos usando Tailwind CSS v4 e com a identidade visual verde-limão (#b3ff38) personalizada da marca Calli.
-
 # Tecnologias Utilizadas
 
 Framework: Next.js (v15+) (App Router & React Server Components)
@@ -28,7 +26,7 @@ Linguagem: TypeScript
 
 Base de Dados: PostgreSQL
 
-ORM / Conectividade: Prisma (com suporte nativo a Pool de ligações)
+Conectividade: Prisma
 
 Autenticação: NextAuth.js
 
@@ -139,3 +137,5 @@ A comunicação e validação de tokens JWT da sessão é realizada de forma sil
 | `POST/api/auth/signout` | Encerra a sessão ativa limpando os cookies seguros no browser |
 
 | `GET/api/auth/session` | Retorna os dados do utilizador ativo (User ID, e-mail e nome) |
+
+##O Diagrama de classes e o Diagrama de casos de uso estão na pasta docs
