@@ -8,21 +8,29 @@ datasource db {
 }
 
 model User {
-  id        String        @id @default(uuid())
-  name      String
-  email     String        @unique
-  password  String        
-  workouts  WorkoutList[]
-  createdAt DateTime      @default(now())
+  id           String            @id @default(uuid())
+  name         String
+  email        String            @unique
+  password     String        
+  workouts     WorkoutList[]
+  
+  measurements BodyMeasurement[] 
+  sessions     WorkoutSession[]  
+  goals        Goal[]            
+  
+  createdAt    DateTime          @default(now())
 }
 
 model WorkoutList {
-  id        String     @id @default(uuid())
+  id        String           @id @default(uuid())
   name      String
   userId    String
-  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   exercises Exercise[]
-  createdAt DateTime   @default(now())
+  
+  sessions  WorkoutSession[] 
+  
+  createdAt DateTime         @default(now())
 }
 
 model Exercise {
@@ -34,4 +42,37 @@ model Exercise {
   completed     Boolean     @default(false)
   workoutListId String
   workoutList   WorkoutList @relation(fields: [workoutListId], references: [id], onDelete: Cascade)
+}
+
+model BodyMeasurement {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  weight    Float?   
+  height    Float?   
+  bodyFat   Float?   
+  notes     String?  
+  createdAt DateTime @default(now())
+}
+
+model WorkoutSession {
+  id             String       @id @default(uuid())
+  userId         String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workoutListId  String?      
+  workoutList    WorkoutList? @relation(fields: [workoutListId], references: [id], onDelete: SetNull)
+  durationMins   Int?         
+  caloriesBurned Int?        
+  completedAt    DateTime     @default(now()) 
+}
+
+model Goal {
+  id          String    @id @default(uuid())
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String    
+  description String?   
+  targetDate  DateTime? 
+  achieved    Boolean   @default(false) 
+  createdAt   DateTime  @default(now())
 }
