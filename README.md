@@ -1,5 +1,3 @@
-# calli-v2
-
 # Calli
 
 O Calli é uma aplicação web fullstack de alta performance desenvolvida para ajudar atletas e entusiastas da calistenia e musculação a organizar as suas rotinas de treino, gerir exercícios personalizados e acompanhar o seu progresso em tempo real.
@@ -34,6 +32,8 @@ Estilização: Tailwind CSS (v4)
 
 Ícones: Lucide React
 
+Deploy: Vercel (host) e Neon.tech (Nuvem)
+
 # Principais Páginas da Aplicação
 
 # 1. Home (/)
@@ -56,6 +56,12 @@ Número total de listas de treino registadas.
 Quantidade total de exercícios planeados.
 
 Quantidade de exercícios finalizados.
+
+Metas de medição corporal.
+
+Registro de medição corporal.
+
+Anotação em treinos já concluídos.
 
 # 4. Catálogo de Exercícios (/catalogo)
 
@@ -125,17 +131,56 @@ npx prisma studio
 
 Acesse http://localhost:5555.
 
-# Mapeamento da API e Server Actions
+# Mapeamento dos Endpoints
 
-# Endpoints Autenticados (Sessão / Cookies)
+# 1. Frontend (Páginas e Interface)
 
-A comunicação e validação de tokens JWT da sessão é realizada de forma silenciosa e segura através do router NextAuth nas seguintes rotas:
+/ (Home) - Página Inicial e de aterragem.
 
+/login - Página de autenticação para utilizadores.
 
-| `POST/api/auth/signin` | Envia as credenciais inseridas na página de login para autenticação |
+/cadastro - Página para criação de uma nova conta.
 
-| `POST/api/auth/signout` | Encerra a sessão ativa limpando os cookies seguros no browser |
+/treinos - Painel para criar listas e gerir os exercícios diários.
 
-| `GET/api/auth/session` | Retorna os dados do utilizador ativo (User ID, e-mail e nome) |
+/evolucao - Dashboard com métricas de progresso, metas, peso e diário de treinos.
 
-##O Diagrama de classes e o Diagrama de casos de uso estão na pasta docs
+/catalogo - Biblioteca estática com instruções de exercícios.
+
+# 2. API (Rotas Tradicionais / NextAuth)
+
+POST /api/auth/signin - Recebe email/senha e inicia a sessão segura.
+
+POST /api/auth/signout - Encerra a sessão ativa do utilizador.
+
+GET /api/auth/session - Consulta os dados da sessão do utilizador autenticado.
+
+# 3. Backend (Server Actions / Funções RPC)
+
+registerUser - Regista um novo utilizador na base de dados com senha encriptada.
+
+createWorkoutList - Cria uma nova pasta/lista de exercícios.
+
+deleteWorkoutList - Apaga uma lista de treinos e os seus exercícios em cascata.
+
+addExercise - Adiciona um novo exercício a uma lista existente.
+
+toggleExerciseStatus - Alterna o estado de um exercício entre concluído e pendente.
+
+deleteExercise - Remove definitivamente um exercício da lista.
+
+addGoal - Regista uma nova meta pessoal de evolução.
+
+toggleGoal - Marca uma meta como atingida ou não atingida.
+
+deleteGoal - Apaga uma meta do sistema.
+
+addMeasurement - Guarda um novo registo de peso e percentagem de gordura corporal.
+
+logWorkoutSession - Regista no histórico diário que um treino foi executado e a sua duração.
+
+# Link para o deploy do site
+
+[https://calli-fitness.vercel.app/]
+
+# O Diagrama de classes e o Diagrama de casos de uso estão na pasta /docs
